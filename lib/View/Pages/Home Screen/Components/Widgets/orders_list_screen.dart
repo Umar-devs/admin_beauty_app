@@ -1,4 +1,5 @@
 import 'package:admin_beauty_app/Core/constants.dart';
+import 'package:admin_beauty_app/View/Pages/Details%20Screen/details_screen.dart';
 import 'package:admin_beauty_app/View/Reusable%20Components/reusable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -68,7 +69,8 @@ class OrdersListScreen extends StatelessWidget {
                         appbarTitle == 'Active Orders'
                             ? Get.to(const OrderTrackingScreen(),
                                 transition: Transition.fadeIn)
-                            : null;
+                            : Get.to(const DetailsScreen(),
+                                transition: Transition.fadeIn);
                       },
                       child: Container(
                         height: height * 0.037,
@@ -84,7 +86,7 @@ class OrdersListScreen extends StatelessWidget {
                         child: Center(
                           child: ReusableText(
                               weight: FontWeight.w600,
-                              fontSize: width * 0.035,
+                              fontSize: width * 0.0325,
                               lbl: 'Details'),
                         ),
                       ),

@@ -1,3 +1,4 @@
+import 'package:admin_beauty_app/View/Pages/Details%20Screen/details_screen.dart';
 import 'package:admin_beauty_app/View/Pages/Home%20Screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

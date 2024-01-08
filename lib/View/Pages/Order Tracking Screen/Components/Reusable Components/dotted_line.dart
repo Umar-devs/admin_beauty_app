@@ -11,7 +11,7 @@ Widget dottedLine(width,height){
     child: Align(
       alignment: Alignment.centerLeft,
       child: SizedBox(
-        height: height * 0.1,
+        height: height * 0.115,
         width: 2,
         child: CustomPaint(
           painter: DottedLinePainter(),

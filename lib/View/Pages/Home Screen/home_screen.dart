@@ -1,6 +1,5 @@
 import 'package:admin_beauty_app/Core/constants.dart';
 import 'package:admin_beauty_app/View/Reusable%20Components/reusable_text.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'Components/Widgets/orders_list_screen.dart';
@@ -20,7 +19,9 @@ class HomeScreen extends StatelessWidget {
         leading: const Text(''),
         centerTitle: true,
         title: ReusableText(
-            weight: FontWeight.w600, fontSize: width * 0.05, lbl: 'Home'),
+            weight: FontWeight.w600,
+            fontSize: width * 0.055,
+            lbl: 'Admin Panel'),
       ),
       bottomNavigationBar: Container(
         height: height * 0.075,
@@ -58,24 +59,21 @@ class HomeScreen extends StatelessWidget {
       body: Container(
         height: height,
         width: width,
-        color: Colors.white,
-        padding: EdgeInsets.only(top: height * 0.05),
+        color: const Color(0xffebc1a9).withOpacity(0.1),
+        padding: EdgeInsets.only(top: height * 0.01),
         child: Column(
           children: [
-            ReusableText(
-                weight: FontWeight.w700,
-                fontSize: width * 0.045,
-                lbl: 'Beauty Express'),
-            ReusableText(
-                weight: FontWeight.w500,
-                fontSize: width * 0.03,
-                lbl: 'The Admin App'),
-            SizedBox(
-              height: height * 0.1,
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: height * 0.015),
+              child: Image.asset(
+                'assets/images/logo.png',
+                height: height * 0.25,
+                width: width * 0.8,
+              ),
             ),
             SizedBox(
               height: height * 0.39,
-              width: width * 0.8,
+              width: width * 0.85,
               child: GridView.builder(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,

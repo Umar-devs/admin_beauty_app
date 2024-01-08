@@ -1,9 +1,7 @@
 import 'package:admin_beauty_app/View/Pages/Order%20Tracking%20Screen/Components/Reusable%20Components/dotted_line.dart';
-import 'package:admin_beauty_app/View/Pages/Order%20Tracking%20Screen/Components/Reusable%20Components/dotted_line_painter.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../Core/constants.dart';
 import '../../Reusable Components/reusable_text.dart';
 import 'Components/Reusable Components/order_status_row.dart';
@@ -46,7 +44,7 @@ class OrderTrackingScreen extends StatelessWidget {
                 width: width * 0.25,
               ),
               SizedBox(
-                height: height * 0.015,
+                height: height * 0.02,
               ),
               OrderStatusRow(
                 width: width,
