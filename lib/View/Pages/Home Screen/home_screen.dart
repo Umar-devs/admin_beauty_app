@@ -1,5 +1,6 @@
 import 'package:admin_beauty_app/Core/constants.dart';
 import 'package:admin_beauty_app/View/Reusable%20Components/reusable_text.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'Components/Widgets/orders_list_screen.dart';
@@ -22,7 +23,7 @@ class HomeScreen extends StatelessWidget {
             weight: FontWeight.w600, fontSize: width * 0.05, lbl: 'Home'),
       ),
       bottomNavigationBar: Container(
-        height: height * 0.07,
+        height: height * 0.075,
         width: width,
         color: themeColor,
         child: Row(
@@ -57,7 +58,7 @@ class HomeScreen extends StatelessWidget {
       body: Container(
         height: height,
         width: width,
-        color: themeLightColor,
+        color: Colors.white,
         padding: EdgeInsets.only(top: height * 0.05),
         child: Column(
           children: [
@@ -96,20 +97,8 @@ class HomeScreen extends StatelessWidget {
                         width: double.infinity,
                         margin: const EdgeInsets.all(1),
                         padding: EdgeInsets.symmetric(vertical: height * 0.03),
-                        decoration: const BoxDecoration(
-                            color: Color(0xffebc1a9),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black54,
-                                blurRadius: 8,
-                                offset: Offset(1, 1),
-                              ),
-                              BoxShadow(
-                                color: Colors.black54,
-                                blurRadius: 8,
-                                offset: Offset(-1, -1),
-                              )
-                            ]),
+                        decoration: BoxDecoration(
+                            color: Colors.white, boxShadow: shadows[index]),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [

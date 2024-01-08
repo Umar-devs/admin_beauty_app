@@ -46,3 +46,53 @@ List selectedNavBarIcons = [
   ),
 ];
 final NavBarController navBarController = Get.put(NavBarController());
+List<List<BoxShadow>> shadows = [
+  [
+    const BoxShadow(
+      color: Color(0xffeeeff1),
+      blurRadius: 8,
+      offset: Offset(1, 1),
+    ),
+    BoxShadow(
+      color: Colors.grey.shade400,
+      blurRadius: 5,
+      offset: const Offset(-1, -1),
+    ),
+  ],
+  [
+    const BoxShadow(
+      color: Color(0xffeeeff1),
+      blurRadius: 8,
+      offset: Offset(-1, 1),
+    ),
+    BoxShadow(
+      color: Colors.grey.shade400,
+      blurRadius: 5,
+      offset: const Offset(1, -1),
+    ),
+  ],
+  [
+    const BoxShadow(
+      color: Color(0xffeeeff1),
+      blurRadius: 8,
+      offset: Offset(1, -1),
+    ),
+    BoxShadow(
+      color: Colors.grey.shade400,
+      blurRadius: 5,
+      offset: const Offset(-1, 1),
+    ),
+  ],
+  [
+    const BoxShadow(
+      color: Color(0xffeeeff1),
+      blurRadius: 8,
+      offset: Offset(-1, -1),
+    ),
+    BoxShadow(
+      color: Colors.grey.shade400,
+      blurRadius: 5,
+      offset: const Offset(1, 1),
+    ),
+  ],
+];

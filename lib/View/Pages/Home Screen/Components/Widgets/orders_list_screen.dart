@@ -3,6 +3,8 @@ import 'package:admin_beauty_app/View/Reusable%20Components/reusable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../Order Tracking Screen/order_tracking_screen.dart';
+
 class OrdersListScreen extends StatelessWidget {
   const OrdersListScreen(
       {super.key,
@@ -61,22 +63,30 @@ class OrdersListScreen extends StatelessWidget {
                             lbl: subCategory),
                       ],
                     ),
-                    trailing: Container(
-                      height: height * 0.037,
-                      width: width * 0.172,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(5),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.grey.shade400,
-                                offset: const Offset(1, -1)),
-                          ]),
-                      child: Center(
-                        child: ReusableText(
-                            weight: FontWeight.w600,
-                            fontSize: width * 0.035,
-                            lbl: 'Details'),
+                    trailing: GestureDetector(
+                      onTap: () {
+                        appbarTitle == 'Active Orders'
+                            ? Get.to(const OrderTrackingScreen(),
+                                transition: Transition.fadeIn)
+                            : null;
+                      },
+                      child: Container(
+                        height: height * 0.037,
+                        width: width * 0.172,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.shade400,
+                                  offset: const Offset(1, -1)),
+                            ]),
+                        child: Center(
+                          child: ReusableText(
+                              weight: FontWeight.w600,
+                              fontSize: width * 0.035,
+                              lbl: 'Details'),
+                        ),
                       ),
                     ),
                   ),
