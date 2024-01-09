@@ -67,8 +67,8 @@ class HomeScreen extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: height * 0.015),
               child: Image.asset(
                 'assets/images/logo.png',
-                height: height * 0.25,
-                width: width * 0.8,
+                height: height * 0.17,
+                width: width * 0.6,
               ),
             ),
             SizedBox(

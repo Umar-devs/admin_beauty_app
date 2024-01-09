@@ -69,7 +69,11 @@ class OrdersListScreen extends StatelessWidget {
                         appbarTitle == 'Active Orders'
                             ? Get.to(const OrderTrackingScreen(),
                                 transition: Transition.fadeIn)
-                            : Get.to(const DetailsScreen(),
+                            : Get.to(
+                                DetailsScreen(
+                                    isNewOrder: appbarTitle == 'New Orders'
+                                        ? true
+                                        : false),
                                 transition: Transition.fadeIn);
                       },
                       child: Container(

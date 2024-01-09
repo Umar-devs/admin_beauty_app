@@ -1,4 +1,6 @@
+import 'package:admin_beauty_app/View/Pages/Home%20Screen/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../../Core/constants.dart';
 import '../../Reusable Components/reusable_text.dart';
 import '../../Reusable Components/reusable_txt_field.dart';
@@ -63,9 +65,9 @@ class LoginScreen extends StatelessWidget {
                       ),
                       errorMessage: errorMsj[i]),
                 ),
-
               GestureDetector(
                 onTap: () {
+                  Get.to(const HomeScreen(), transition: Transition.fadeIn);
                   // if (_formKey.currentState!.validate()) {
                   //   authController.login(
                   //       loginEmailTextController.text.toString(),

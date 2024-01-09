@@ -1,11 +1,15 @@
 import 'package:admin_beauty_app/Core/constants.dart';
+import 'package:admin_beauty_app/View/Pages/Home%20Screen/home_screen.dart';
+import 'package:admin_beauty_app/View/Reusable%20Components/custom_btn.dart';
 import 'package:admin_beauty_app/View/Reusable%20Components/reusable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'Components/Reusable Components/top_tick_circle.dart';
+import 'data.dart';
 
 class DetailsScreen extends StatelessWidget {
-  const DetailsScreen({super.key});
-
+  const DetailsScreen({super.key, required this.isNewOrder});
+  final bool isNewOrder;
   @override
   Widget build(BuildContext context) {
     final double height = screenHeight(context);
@@ -35,20 +39,22 @@ class DetailsScreen extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(
-                height: height * 0.025,
+                height: height * 0.02,
               ),
               TopTickCircle(
                 width: width,
               ),
               Container(
-                height: height * 0.5,
+                height: height * 0.51,
                 width: width,
                 margin: EdgeInsets.symmetric(vertical: height * 0.022),
+                padding: EdgeInsets.symmetric(horizontal: width * 0.05),
                 decoration: BoxDecoration(
                   color: themeColor,
                   borderRadius: BorderRadius.circular(7),
                 ),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ReusableText(
                         weight: FontWeight.w600,
@@ -58,6 +64,47 @@ class DetailsScreen extends StatelessWidget {
                         weight: FontWeight.w500,
                         fontSize: width * 0.025,
                         lbl: 'Chosen Glamour'),
+                    Divider(
+                      color: Colors.black87,
+                      indent: width * 0.05,
+                      endIndent: width * 0.05,
+                    ),
+                    for (int i = 0; i < 13; i++)
+                      i % 2 == 0
+                          ? Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                ReusableText(
+                                    weight: FontWeight.w600,
+                                    fontSize: width * 0.035,
+                                    lbl: heading[i]),
+                                ReusableText(
+                                    weight: FontWeight.w500,
+                                    fontSize: width * 0.03,
+                                    lbl: detail[i])
+                              ],
+                            )
+                          : const Divider(
+                              color: Colors.black12,
+                            ),
+                    Divider(
+                      color: Colors.black87,
+                      indent: width * 0.05,
+                      endIndent: width * 0.05,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ReusableText(
+                            weight: FontWeight.w500,
+                            fontSize: width * 0.03,
+                            lbl: 'Sub Total'),
+                        ReusableText(
+                            weight: FontWeight.w600,
+                            fontSize: width * 0.035,
+                            lbl: '\$ 20'),
+                      ],
+                    )
                   ],
                 ),
               ),
@@ -65,25 +112,111 @@ class DetailsScreen extends StatelessWidget {
                 height: height * 0.1,
                 width: width,
                 margin: EdgeInsets.only(bottom: height * 0.025),
+                padding: EdgeInsets.symmetric(
+                  horizontal: width * 0.05,
+                ),
                 decoration: BoxDecoration(
                     color: themeColor, borderRadius: BorderRadius.circular(7)),
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    ReusableText(
+                        weight: FontWeight.w600,
+                        fontSize: width * 0.035,
+                        lbl: 'Treatment Address'),
+                    const SizedBox(
+                      height: 2,
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: ReusableText(
+                          weight: FontWeight.w500,
+                          fontSize: width * 0.03,
+                          alignTxt: TextAlign.left,
+                          lbl: 'Lane 1 Lane 2 City County'),
+                    )
+                  ],
+                ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   for (int i = 0; i < 2; i++)
-                    Container(
-                      height: height * 0.045,
-                      width: width * 0.28,
-                      decoration: BoxDecoration(
-                        color: themeColor,
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: Center(
-                        child: ReusableText(
-                            weight: FontWeight.w600,
-                            fontSize: width * 0.03,
-                            lbl: 'Change Status'),
+                    GestureDetector(
+                      onTap: () => i == 0
+                          ? Get.bottomSheet(Container(
+                              height: isNewOrder == true
+                                  ? height * 0.22
+                                  : height * 0.15,
+                              width: width,
+                              decoration: BoxDecoration(
+                                  color: themeLightColor,
+                                  borderRadius: const BorderRadius.only(
+                                      topRight: Radius.circular(20),
+                                      topLeft: Radius.circular(20))),
+                              child: SingleChildScrollView(
+                                scrollDirection: Axis.vertical,
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      height: height * 0.045,
+                                      width: width * 0.13,
+                                      color: themeColor,
+                                      margin: EdgeInsets.only(
+                                          bottom: height * 0.025),
+                                      child: Center(
+                                        child: IconButton(
+                                            onPressed: () => Get.back(),
+                                            icon: const Icon(
+                                              Icons.cancel_outlined,
+                                              color: Colors.black,
+                                            )),
+                                      ),
+                                    ),
+                                    CustomBtn(
+                                      onTap: () {},
+                                      height: height,
+                                      width: width,
+                                      title: isNewOrder == true
+                                          ? 'Active Order'
+                                          : 'Remove Order',
+                                      btnHeight: height * 0.045,
+                                      btnWidth: width * 0.3,
+                                      bottomPad: height * 0.015,
+                                      fontSizeTitle: width * 0.0315,
+                                    ),
+                                    isNewOrder == true
+                                        ? CustomBtn(
+                                            onTap: () {},
+                                            height: height,
+                                            width: width,
+                                            title: 'Cancel Order',
+                                            btnHeight: height * 0.045,
+                                            btnWidth: width * 0.3,
+                                            fontSizeTitle: width * 0.0315,
+                                          )
+                                        : const Text(''),
+                                  ],
+                                ),
+                              ),
+                            ))
+                          : Get.offAll(const HomeScreen(),
+                              transition: Transition.fadeIn),
+                      child: Container(
+                        height: height * 0.045,
+                        width: width * 0.28,
+                        decoration: BoxDecoration(
+                          color: themeColor,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Center(
+                          child: ReusableText(
+                              weight: FontWeight.w600,
+                              fontSize: width * 0.03,
+                              lbl: btnTitle[i]),
+                        ),
                       ),
                     )
                 ],
@@ -93,23 +226,5 @@ class DetailsScreen extends StatelessWidget {
         ),
       ),
     ));
-  }
-}
-
-class TopTickCircle extends StatelessWidget {
-  const TopTickCircle({super.key, required this.width});
-  final double width;
-  @override
-  Widget build(BuildContext context) {
-    return CircleAvatar(
-      radius: width * 0.11,
-      backgroundColor: themeColor,
-      child: Icon(
-        Icons.done,
-        color: Colors.black,
-        weight: 20,
-        size: width * 0.18,
-      ),
-    );
   }
 }

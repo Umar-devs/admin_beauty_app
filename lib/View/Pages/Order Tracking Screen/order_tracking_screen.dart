@@ -68,7 +68,7 @@ class OrderTrackingScreen extends StatelessWidget {
                   width: width,
                   status: 'Beautician outside',
                   time: '\nUpcoming',
-                  icon: Icons.door_sliding_sharp,
+                  icon: Icons.home,
                   backgroundColor: Colors.transparent,
                   height: height),
               dottedLine(width, height),

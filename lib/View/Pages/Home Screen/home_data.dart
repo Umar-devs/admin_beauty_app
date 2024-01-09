@@ -96,3 +96,26 @@ List<List<BoxShadow>> shadows = [
     ),
   ],
 ];
+// void main() {
+//   DateTime startDate = DateTime(2024, 1, 1);
+//   DateTime endDate = DateTime(2024, 1, 8);
+//
+//   List<DateTime> allDates = getAllDatesBetween(startDate, endDate);
+//
+//   print(allDates);
+// }
+//
+// List<DateTime> getAllDatesBetween(DateTime startDate, DateTime endDate) {
+//   List<DateTime> allDates = [];
+//
+//   // Add the start date
+//   allDates.add(startDate);
+//
+//   // Loop from start date to end date (inclusive)
+//   while (startDate.isBefore(endDate)) {
+//     startDate = startDate.add(Duration(days: 1));
+//     allDates.add(startDate);
+//   }
+//
+//   return allDates;
+// }
