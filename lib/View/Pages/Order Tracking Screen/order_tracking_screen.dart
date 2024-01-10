@@ -1,4 +1,6 @@
 import 'package:admin_beauty_app/View/Pages/Order%20Tracking%20Screen/Components/Reusable%20Components/dotted_line.dart';
+import 'package:admin_beauty_app/View/Pages/Order%20Tracking%20Screen/data.dart';
+import 'package:admin_beauty_app/View/Reusable%20Components/custom_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -46,39 +48,27 @@ class OrderTrackingScreen extends StatelessWidget {
               SizedBox(
                 height: height * 0.02,
               ),
-              OrderStatusRow(
-                width: width,
-                status: 'Booking Confirmed',
-                time: '\n1/8/24 At 11.00 Am',
-                icon: Icons.done,
-                backgroundColor: themeColor,
+              for (int i = 0; i < 7; i++)
+                i.isEven
+                    ? OrderStatusRow(
+                        width: width,
+                        status: statusRowStatus[i],
+                        time: statusRowDateTime[i],
+                        icon: statusRowIcon[i],
+                        backgroundColor: statusRowColor[i],
+                        height: height,
+                      )
+                    : dottedLine(width, height),
+              CustomBtn(
+                onTap: () {},
                 height: height,
-              ),
-              dottedLine(width, height),
-              OrderStatusRow(
-                  width: width,
-                  status: 'Beautician on route',
-                  time: '\n10/8/24 At 9.00 Am',
-                  icon: FontAwesomeIcons.car,
-                  backgroundColor: themeColor,
-                  track: true,
-                  height: height),
-              dottedLine(width, height),
-              OrderStatusRow(
-                  width: width,
-                  status: 'Beautician outside',
-                  time: '\nUpcoming',
-                  icon: Icons.home,
-                  backgroundColor: Colors.transparent,
-                  height: height),
-              dottedLine(width, height),
-              OrderStatusRow(
-                  width: width,
-                  status: 'Treatment Completed',
-                  time: '\nUpcoming',
-                  icon: Icons.check_circle,
-                  backgroundColor: Colors.transparent,
-                  height: height),
+                width: width,
+                title: 'Home',
+                btnHeight: height * 0.05,
+                btnWidth: width * 0.6,
+                fontSizeTitle: width * 0.035,
+                topPad: height * 0.03,
+              )
             ],
           ),
         ),

@@ -38,8 +38,8 @@ class OrdersReportScreen extends StatelessWidget {
                   : TxtField(
                       bottomPad: height * 0.015,
                       keyboardType: TextInputType.number,
-                      label: 'hint:(year,month,day)',
-                      errorMessage: 'This Field is Empty'),
+                      errorMessage: 'This Field is Empty',
+                      label: 'hint:(year,month,day)'),
             CustomBtn(
               onTap: () {},
               height: height,

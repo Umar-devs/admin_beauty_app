@@ -12,15 +12,14 @@ class MyBottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final double height = screenHeight(context);
     final double width = screenWidth(context);
-    return SafeArea(
-        child: Obx(() => Scaffold(
+    return Obx(() => Scaffold(
           appBar: AppBar(
             backgroundColor: themeColor,
             leading: const Text(''),
             centerTitle: true,
             title: ReusableText(
                 weight: FontWeight.w600,
-                fontSize: width * 0.055,
+                fontSize: width * 0.045,
                 lbl: 'Admin Panel'),
           ),
           bottomNavigationBar: Container(
@@ -36,27 +35,28 @@ class MyBottomNavBar extends StatelessWidget {
                       navBarController.changeIndex(i);
                     },
                     child: Obx(() => Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        navBarController.indexNum.value == i
-                            ? selectedNavBarIcons[i]
-                            : navBarIcons[i],
-                        ReusableText(
-                            weight: FontWeight.w600,
-                            fontSize: navBarController.indexNum.value == i
-                                ? width * 0.038
-                                : width * 0.036,
-                            clr: navBarController.indexNum.value == i
-                                ? Colors.green
-                                : Colors.black,
-                            lbl: navBarTitle[i]),
-                      ],
-                    )),
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            navBarController.indexNum.value == i
+                                ? selectedNavBarIcons[i]
+                                : navBarIcons[i],
+                            ReusableText(
+                                weight: FontWeight.w600,
+                                fontSize:
+                                    navBarController.indexNum.value == i
+                                        ? width * 0.038
+                                        : width * 0.036,
+                                clr: navBarController.indexNum.value == i
+                                    ? Colors.green
+                                    : Colors.black,
+                                lbl: navBarTitle[i]),
+                          ],
+                        )),
                   )
               ],
             ),
           ),
           body: navScreens.elementAt(navBarController.indexNum.value),
-        )));
+        ));
   }
 }
