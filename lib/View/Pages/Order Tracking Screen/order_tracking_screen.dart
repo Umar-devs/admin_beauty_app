@@ -1,8 +1,6 @@
 import 'package:admin_beauty_app/View/Pages/Order%20Tracking%20Screen/Components/Reusable%20Components/dotted_line.dart';
 import 'package:admin_beauty_app/View/Pages/Order%20Tracking%20Screen/data.dart';
-import 'package:admin_beauty_app/View/Reusable%20Components/custom_btn.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import '../../../Core/constants.dart';
 import '../../Reusable Components/reusable_text.dart';
