@@ -53,20 +53,11 @@ class OrderTrackingScreen extends StatelessWidget {
                         status: statusRowStatus[i],
                         time: statusRowDateTime[i],
                         icon: statusRowIcon[i],
+                        track: i == 2 ? true : false,
                         backgroundColor: statusRowColor[i],
                         height: height,
                       )
                     : dottedLine(width, height),
-              // CustomBtn(
-              //   onTap: () {},
-              //   height: height,
-              //   width: width,
-              //   title: 'Home',
-              //   btnHeight: height * 0.05,
-              //   btnWidth: width * 0.6,
-              //   fontSizeTitle: width * 0.035,
-              //   topPad: height * 0.03,
-              // )
             ],
           ),
         ),

@@ -17,7 +17,7 @@ class AccountScreen extends StatelessWidget {
       width: width,
       color: themeLightColor,
       padding: EdgeInsets.only(
-          left: width * 0.04, right: width * 0.04, top: height * 0.025),
+          left: width * 0.05, right: width * 0.05, top: height * 0.025),
       child: Column(
         children: [
           Image.asset('assets/images/profile.png'),
@@ -60,6 +60,7 @@ class AccountScreen extends StatelessWidget {
                                               ? j == 0
                                                   ? title[2]
                                                   : title[3]
+                                              // for third Container
                                               : j == 0
                                                   ? title[4]
                                                   : title[5]),
