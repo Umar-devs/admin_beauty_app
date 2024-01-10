@@ -46,7 +46,7 @@ class OrderTrackingScreen extends StatelessWidget {
                 width: width * 0.25,
               ),
               SizedBox(
-                height: height * 0.02,
+                height: height * 0.025,
               ),
               for (int i = 0; i < 7; i++)
                 i.isEven
@@ -59,16 +59,16 @@ class OrderTrackingScreen extends StatelessWidget {
                         height: height,
                       )
                     : dottedLine(width, height),
-              CustomBtn(
-                onTap: () {},
-                height: height,
-                width: width,
-                title: 'Home',
-                btnHeight: height * 0.05,
-                btnWidth: width * 0.6,
-                fontSizeTitle: width * 0.035,
-                topPad: height * 0.03,
-              )
+              // CustomBtn(
+              //   onTap: () {},
+              //   height: height,
+              //   width: width,
+              //   title: 'Home',
+              //   btnHeight: height * 0.05,
+              //   btnWidth: width * 0.6,
+              //   fontSizeTitle: width * 0.035,
+              //   topPad: height * 0.03,
+              // )
             ],
           ),
         ),
