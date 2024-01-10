@@ -2,7 +2,6 @@ import 'package:admin_beauty_app/View/Pages/Orders%20Report%20Screen/data.dart';
 import 'package:admin_beauty_app/View/Reusable%20Components/custom_btn.dart';
 import 'package:admin_beauty_app/View/Reusable%20Components/reusable_txt_field.dart';
 import 'package:flutter/material.dart';
-
 import '../../../Core/constants.dart';
 import '../../Reusable Components/reusable_text.dart';
 import 'package:get/get.dart';
@@ -102,7 +101,14 @@ class OrdersReportScreen extends StatelessWidget {
                             )
                   ],
                 ),
-              )
+              ), CustomBtn(
+                  onTap: () {},
+                  height: height,
+                  width: width,
+                  title: 'Clear',
+                  btnHeight: height * 0.05,
+                  btnWidth: width * 0.6,
+                  fontSizeTitle: width * 0.038),
             ],
           ),
         ),
