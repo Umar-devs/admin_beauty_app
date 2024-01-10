@@ -1,8 +1,8 @@
-import 'package:admin_beauty_app/View/Pages/Home%20Screen/home_screen.dart';
-import 'package:admin_beauty_app/View/Pages/Login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'View/Pages/Home Screen/home_screen.dart';
+import 'View/Pages/My Bottom Nav Bar/my_bottom_nav.dart';
 import 'View/Pages/Orders Report Screen/orders_report_screen.dart';
 
 void main() {
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: OrdersReportScreen(),
+      home: MyBottomNavBar(),
     );
   }
 }

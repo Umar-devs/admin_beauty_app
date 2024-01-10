@@ -1,5 +1,5 @@
 import 'package:admin_beauty_app/Core/constants.dart';
-import 'package:admin_beauty_app/View/Pages/Home%20Screen/home_screen.dart';
+import 'package:admin_beauty_app/View/Pages/My%20Bottom%20Nav%20Bar/my_bottom_nav.dart';
 import 'package:admin_beauty_app/View/Reusable%20Components/custom_btn.dart';
 import 'package:admin_beauty_app/View/Reusable%20Components/reusable_text.dart';
 import 'package:flutter/material.dart';
@@ -33,21 +33,19 @@ class DetailsScreen extends StatelessWidget {
         height: height,
         width: width,
         color: themeLightColor,
-        padding: EdgeInsets.symmetric(horizontal: width * 0.08),
+        padding: EdgeInsets.only(
+            left: width * 0.08, right: width * 0.08, top: height * 0.0225),
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
-              SizedBox(
-                height: height * 0.02,
-              ),
               TopTickCircle(
                 width: width,
               ),
               Container(
-                height: height * 0.51,
+                height: height * 0.49,
                 width: width,
-                margin: EdgeInsets.symmetric(vertical: height * 0.022),
+                margin: EdgeInsets.symmetric(vertical: height * 0.0225),
                 padding: EdgeInsets.symmetric(horizontal: width * 0.05),
                 decoration: BoxDecoration(
                   color: themeColor,
@@ -111,7 +109,7 @@ class DetailsScreen extends StatelessWidget {
               Container(
                 height: height * 0.1,
                 width: width,
-                margin: EdgeInsets.only(bottom: height * 0.025),
+                margin: EdgeInsets.only(bottom: height * 0.0225),
                 padding: EdgeInsets.symmetric(
                   horizontal: width * 0.05,
                 ),
@@ -148,7 +146,7 @@ class DetailsScreen extends StatelessWidget {
                       onTap: () => i == 0
                           ? Get.bottomSheet(Container(
                               height: isNewOrder == true
-                                  ? height * 0.22
+                                  ? height * 0.2
                                   : height * 0.15,
                               width: width,
                               decoration: BoxDecoration(
@@ -202,7 +200,7 @@ class DetailsScreen extends StatelessWidget {
                                 ),
                               ),
                             ))
-                          : Get.offAll(const HomeScreen(),
+                          : Get.offAll(const MyBottomNavBar(),
                               transition: Transition.fadeIn),
                       child: Container(
                         height: height * 0.045,
