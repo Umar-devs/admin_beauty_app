@@ -54,26 +54,28 @@ class LoginScreen extends StatelessWidget {
                     right: width * 0.073,
                     top: height * 0.05,
                   ),
-                  child: TxtField(
-                      textEditingController: txtControllers[i],
-                      label: hintTxt[i],
-                      keyboardType: TextInputType.emailAddress,
-                      fieldIcon: Icon(
-                        iconsList[i],
-                        size: width * 0.055,
-                        color: Colors.black.withOpacity(0.4),
-                      ),
-                      errorMessage: errorMsj[i]),
+                  child: Material(
+                    child: TxtField(
+                        textEditingController: txtControllers[i],
+                        label: hintTxt[i],
+                        keyboardType: TextInputType.emailAddress,
+                        fieldIcon: Icon(
+                          iconsList[i],
+                          size: width * 0.055,
+                          color: Colors.black.withOpacity(0.4),
+                        ),
+                        errorMessage: errorMsj[i]),
+                  ),
                 ),
               GestureDetector(
                 onTap: () {
                   Get.to(const HomeScreen(), transition: Transition.fadeIn);
-                  // if (_formKey.currentState!.validate()) {
-                  //   authController.login(
-                  //       loginEmailTextController.text.toString(),
-                  //       loginPasswordTextController.text.toString());
-                  //   Utils().toastMessage('Checking User Credentials');
-                  // }
+                  if (_formKey.currentState!.validate()) {
+                    authController.login(
+                        loginEmailTextController.text.toString(),
+                        loginPasswordTextController.text.toString());
+                    Utils().toastMessage('Checking User Credentials');
+                  }
                 },
                 child: LoginBtn(
                   screenWidth: width,

@@ -2,7 +2,7 @@ import 'package:admin_beauty_app/Core/constants.dart';
 import 'package:admin_beauty_app/View/Reusable%20Components/reusable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'Components/Widgets/orders_list_screen.dart';
+import '../Orders List screen/orders_list_screen.dart';
 import 'home_data.dart';
 
 class HomeScreen extends StatelessWidget {
