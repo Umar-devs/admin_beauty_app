@@ -1,3 +1,4 @@
+import 'package:admin_beauty_app/Controller/Auth%20controller/auth_controller.dart';
 import 'package:admin_beauty_app/View/Pages/Home%20Screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,6 +11,7 @@ import 'data.dart';
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
   final _formKey = GlobalKey<FormState>();
+  final AuthController authController = Get.put(AuthController());
   @override
   Widget build(BuildContext context) {
     double height = screenHeight(context);
@@ -74,7 +76,6 @@ class LoginScreen extends StatelessWidget {
                     authController.login(
                         loginEmailTextController.text.toString(),
                         loginPasswordTextController.text.toString());
-                    Utils().toastMessage('Checking User Credentials');
                   }
                 },
                 child: LoginBtn(

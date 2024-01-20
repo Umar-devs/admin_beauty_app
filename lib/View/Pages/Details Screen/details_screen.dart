@@ -2,19 +2,57 @@ import 'package:admin_beauty_app/Core/constants.dart';
 import 'package:admin_beauty_app/View/Pages/My%20Bottom%20Nav%20Bar/my_bottom_nav.dart';
 import 'package:admin_beauty_app/View/Reusable%20Components/custom_btn.dart';
 import 'package:admin_beauty_app/View/Reusable%20Components/reusable_text.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'Components/Reusable Components/top_tick_circle.dart';
 import 'data.dart';
 
 class DetailsScreen extends StatelessWidget {
-  const DetailsScreen({super.key, required this.isNewOrder});
+  const DetailsScreen(
+      {super.key,
+      required this.isNewOrder,
+      required this.name,
+      required this.category,
+      required this.service,
+      required this.time,
+      required this.date,
+      required this.phone,
+      required this.price,
+      required this.address,
+      required this.status,
+      required this.ind});
   final bool isNewOrder;
+  final String name;
+  final String category;
+  final String service;
+  final String time;
+  final String date;
+  final String phone;
+  final String price;
+  final String address;
+  final String status;
+  final String ind;
   @override
   Widget build(BuildContext context) {
     final double height = screenHeight(context);
     final double width = screenWidth(context);
-
+    List<String> details = [
+      status,
+      '',
+      name,
+      '',
+      category,
+      '',
+      service,
+      '',
+      time,
+      '',
+      date,
+      '',
+      phone,
+    ];
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
@@ -79,7 +117,7 @@ class DetailsScreen extends StatelessWidget {
                                 ReusableText(
                                     weight: FontWeight.w500,
                                     fontSize: width * 0.03,
-                                    lbl: detail[i])
+                                    lbl: details[i])
                               ],
                             )
                           : const Divider(
@@ -100,7 +138,7 @@ class DetailsScreen extends StatelessWidget {
                         ReusableText(
                             weight: FontWeight.w600,
                             fontSize: width * 0.035,
-                            lbl: '\$ 20'),
+                            lbl: '£$price'),
                       ],
                     )
                   ],
@@ -109,7 +147,7 @@ class DetailsScreen extends StatelessWidget {
               Container(
                 height: height * 0.1,
                 width: width,
-                margin: EdgeInsets.only(bottom: height * 0.0225),
+                margin: EdgeInsets.only(bottom: height * 0.03),
                 padding: EdgeInsets.symmetric(
                   horizontal: width * 0.05,
                 ),
@@ -133,7 +171,7 @@ class DetailsScreen extends StatelessWidget {
                           weight: FontWeight.w500,
                           fontSize: width * 0.03,
                           alignTxt: TextAlign.left,
-                          lbl: 'Lane 1 Lane 2 City County'),
+                          lbl: address),
                     )
                   ],
                 ),
@@ -174,7 +212,27 @@ class DetailsScreen extends StatelessWidget {
                                       ),
                                     ),
                                     CustomBtn(
-                                      onTap: () {},
+                                      onTap: () {
+                                        FirebaseDatabase.instance
+                                            .ref()
+                                            .child('Orders List')
+                                            .child(ind)
+                                            .set({
+                                          'name': name,
+                                          'category': category,
+                                          'service': service,
+                                          'time': time,
+                                          'date': date,
+                                          'phone': phone,
+                                          'status': isNewOrder == true
+                                              ? 'active'
+                                              : 'remove',
+                                          'price': price,
+                                          'address': address,
+                                        }).then((value) => Get.offAll(
+                                                const MyBottomNavBar(),
+                                                transition: Transition.fadeIn));
+                                      },
                                       height: height,
                                       width: width,
                                       title: isNewOrder == true
@@ -187,7 +245,26 @@ class DetailsScreen extends StatelessWidget {
                                     ),
                                     isNewOrder == true
                                         ? CustomBtn(
-                                            onTap: () {},
+                                            onTap: () {
+                                              FirebaseDatabase.instance
+                                                  .ref()
+                                                  .child('Orders List')
+                                                  .child(ind)
+                                                  .set({
+                                                'name': name,
+                                                'category': category,
+                                                'service': service,
+                                                'time': time,
+                                                'date': date,
+                                                'phone': phone,
+                                                'status': 'cancel',
+                                                'price': price,
+                                                'address': address,
+                                              }).then((value) => Get.offAll(
+                                                      const MyBottomNavBar(),
+                                                      transition:
+                                                          Transition.fadeIn));
+                                            },
                                             height: height,
                                             width: width,
                                             title: 'Cancel Order',
@@ -204,7 +281,7 @@ class DetailsScreen extends StatelessWidget {
                               transition: Transition.fadeIn),
                       child: Container(
                         height: height * 0.045,
-                        width: width * 0.28,
+                        width: width * 0.33,
                         decoration: BoxDecoration(
                           color: themeColor,
                           borderRadius: BorderRadius.circular(5),

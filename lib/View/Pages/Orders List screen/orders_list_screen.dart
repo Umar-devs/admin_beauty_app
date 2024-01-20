@@ -35,8 +35,16 @@ class OrdersListScreen extends StatelessWidget {
           centerTitle: true,
         ),
         body: StreamBuilder(
-            stream:
-                databaseRef.orderByChild('status').equalTo('pending').onValue,
+            stream: databaseRef
+                .orderByChild('status')
+                .equalTo(appbarTitle == 'New Orders'
+                    ? 'pending'
+                    : appbarTitle == 'Active Orders'
+                        ? 'active'
+                        : appbarTitle == 'Cancelled Orders'
+                            ? 'cancel'
+                            : 'completed')
+                .onValue,
             builder: (context, snap) {
               if (snap.connectionState == ConnectionState.waiting) {
                 return const Center(
@@ -83,9 +91,10 @@ class OrdersListScreen extends StatelessWidget {
                                         lbl: filteredItems[index]['category']),
                                     ReusableText(
                                         weight: FontWeight.w500,
-                                        fontSize: width * 0.03,
+                                        fontSize: width * 0.029,
                                         alignTxt: TextAlign.left,
-                                        lbl: filteredItems[index]['service']),
+                                        lbl:
+                                            '${filteredItems[index]['service']} (£${filteredItems[index]['price']})'),
                                   ],
                                 ),
                                 trailing: GestureDetector(
@@ -95,15 +104,37 @@ class OrdersListScreen extends StatelessWidget {
                                             transition: Transition.fadeIn)
                                         : Get.to(
                                             DetailsScreen(
-                                                isNewOrder:
-                                                    appbarTitle == 'New Orders'
-                                                        ? true
-                                                        : false),
+                                              isNewOrder:
+                                                  appbarTitle == 'New Orders'
+                                                      ? true
+                                                      : false,
+                                              name: filteredItems[index]
+                                                  ['name'],
+                                              category: filteredItems[index]
+                                                  ['category'],
+                                              service: filteredItems[index]
+                                                  ['service'],
+                                              time: filteredItems[index]
+                                                  ['time'],
+                                              date: filteredItems[index]
+                                                  ['date'],
+                                              phone: filteredItems[index]
+                                                  ['phone'],
+                                              price: filteredItems[index]
+                                                  ['price'],
+                                              address: filteredItems[index]
+                                                  ['address'],
+                                              status: filteredItems[index]
+                                                  ['status'],
+                                              ind: filteredItems[index]['key'],
+                                            ),
                                             transition: Transition.fadeIn);
                                   },
                                   child: Container(
                                     height: height * 0.037,
                                     width: width * 0.172,
+                                    margin:
+                                        EdgeInsets.only(left: width * 0.075),
                                     decoration: BoxDecoration(
                                         color: Colors.white,
                                         borderRadius: BorderRadius.circular(5),
