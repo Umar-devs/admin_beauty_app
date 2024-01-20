@@ -71,7 +71,6 @@ class LoginScreen extends StatelessWidget {
                 ),
               GestureDetector(
                 onTap: () {
-                  Get.to(const HomeScreen(), transition: Transition.fadeIn);
                   if (_formKey.currentState!.validate()) {
                     authController.login(
                         loginEmailTextController.text.toString(),

@@ -43,7 +43,7 @@ class OrdersListScreen extends StatelessWidget {
                         ? 'active'
                         : appbarTitle == 'Cancelled Orders'
                             ? 'cancel'
-                            : 'completed')
+                            : 'complete')
                 .onValue,
             builder: (context, snap) {
               if (snap.connectionState == ConnectionState.waiting) {
@@ -99,36 +99,39 @@ class OrdersListScreen extends StatelessWidget {
                                 ),
                                 trailing: GestureDetector(
                                   onTap: () {
-                                    appbarTitle == 'Active Orders'
-                                        ? Get.to(const OrderTrackingScreen(),
-                                            transition: Transition.fadeIn)
-                                        : Get.to(
-                                            DetailsScreen(
-                                              isNewOrder:
+                                    Get.to(
+                                        DetailsScreen(
+                                          name: filteredItems[index]['name'],
+                                          category: filteredItems[index]
+                                              ['category'],
+                                          service: filteredItems[index]
+                                              ['service'],
+                                          time: filteredItems[index]['time'],
+                                          date: filteredItems[index]['date'],
+                                          phone: filteredItems[index]['phone'],
+                                          price: filteredItems[index]['price'],
+                                          address: filteredItems[index]
+                                              ['address'],
+                                          status: filteredItems[index]
+                                              ['status'],
+                                          ind: filteredItems[index]['key'],
+                                          dualBtn: appbarTitle ==
+                                                      'Cancelled Orders' ||
+                                                  appbarTitle ==
+                                                      'Completed Orders'
+                                              ? false
+                                              : true,
+                                          firstBtnTitle:
+                                              appbarTitle == 'New Orders'
+                                                  ? 'Active'
+                                                  : 'Complete',
+                                          secBtnTitle: appbarTitle ==
+                                                      'Active Orders' ||
                                                   appbarTitle == 'New Orders'
-                                                      ? true
-                                                      : false,
-                                              name: filteredItems[index]
-                                                  ['name'],
-                                              category: filteredItems[index]
-                                                  ['category'],
-                                              service: filteredItems[index]
-                                                  ['service'],
-                                              time: filteredItems[index]
-                                                  ['time'],
-                                              date: filteredItems[index]
-                                                  ['date'],
-                                              phone: filteredItems[index]
-                                                  ['phone'],
-                                              price: filteredItems[index]
-                                                  ['price'],
-                                              address: filteredItems[index]
-                                                  ['address'],
-                                              status: filteredItems[index]
-                                                  ['status'],
-                                              ind: filteredItems[index]['key'],
-                                            ),
-                                            transition: Transition.fadeIn);
+                                              ? 'Cancel'
+                                              : 'Remove',
+                                        ),
+                                        transition: Transition.fadeIn);
                                   },
                                   child: Container(
                                     height: height * 0.037,

@@ -12,7 +12,7 @@ import 'data.dart';
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen(
       {super.key,
-      required this.isNewOrder,
+      required this.dualBtn,
       required this.name,
       required this.category,
       required this.service,
@@ -22,8 +22,12 @@ class DetailsScreen extends StatelessWidget {
       required this.price,
       required this.address,
       required this.status,
-      required this.ind});
-  final bool isNewOrder;
+      required this.ind,
+      required this.firstBtnTitle,
+      required this.secBtnTitle});
+  final bool dualBtn;
+  final String firstBtnTitle;
+  final String secBtnTitle;
   final String name;
   final String category;
   final String service;
@@ -183,7 +187,7 @@ class DetailsScreen extends StatelessWidget {
                     GestureDetector(
                       onTap: () => i == 0
                           ? Get.bottomSheet(Container(
-                              height: isNewOrder == true
+                              height: dualBtn == true
                                   ? height * 0.2
                                   : height * 0.15,
                               width: width,
@@ -211,39 +215,7 @@ class DetailsScreen extends StatelessWidget {
                                             )),
                                       ),
                                     ),
-                                    CustomBtn(
-                                      onTap: () {
-                                        FirebaseDatabase.instance
-                                            .ref()
-                                            .child('Orders List')
-                                            .child(ind)
-                                            .set({
-                                          'name': name,
-                                          'category': category,
-                                          'service': service,
-                                          'time': time,
-                                          'date': date,
-                                          'phone': phone,
-                                          'status': isNewOrder == true
-                                              ? 'active'
-                                              : 'remove',
-                                          'price': price,
-                                          'address': address,
-                                        }).then((value) => Get.offAll(
-                                                const MyBottomNavBar(),
-                                                transition: Transition.fadeIn));
-                                      },
-                                      height: height,
-                                      width: width,
-                                      title: isNewOrder == true
-                                          ? 'Active Order'
-                                          : 'Remove Order',
-                                      btnHeight: height * 0.045,
-                                      btnWidth: width * 0.3,
-                                      bottomPad: height * 0.015,
-                                      fontSizeTitle: width * 0.0315,
-                                    ),
-                                    isNewOrder == true
+                                    dualBtn == true
                                         ? CustomBtn(
                                             onTap: () {
                                               FirebaseDatabase.instance
@@ -257,7 +229,8 @@ class DetailsScreen extends StatelessWidget {
                                                 'time': time,
                                                 'date': date,
                                                 'phone': phone,
-                                                'status': 'cancel',
+                                                'status':
+                                                    firstBtnTitle.toLowerCase(),
                                                 'price': price,
                                                 'address': address,
                                               }).then((value) => Get.offAll(
@@ -267,12 +240,40 @@ class DetailsScreen extends StatelessWidget {
                                             },
                                             height: height,
                                             width: width,
-                                            title: 'Cancel Order',
+                                            title: '$firstBtnTitle Order',
                                             btnHeight: height * 0.045,
                                             btnWidth: width * 0.3,
+                                            bottomPad: height * 0.015,
                                             fontSizeTitle: width * 0.0315,
                                           )
-                                        : const Text(''),
+                                        : SizedBox(height: 0,),
+                                    CustomBtn(
+                                      onTap: () {
+                                        FirebaseDatabase.instance
+                                            .ref()
+                                            .child('Orders List')
+                                            .child(ind)
+                                            .set({
+                                          'name': name,
+                                          'category': category,
+                                          'service': service,
+                                          'time': time,
+                                          'date': date,
+                                          'phone': phone,
+                                          'status': secBtnTitle.toLowerCase(),
+                                          'price': price,
+                                          'address': address,
+                                        }).then((value) => Get.offAll(
+                                                const MyBottomNavBar(),
+                                                transition: Transition.fadeIn));
+                                      },
+                                      height: height,
+                                      width: width,
+                                      title: '$secBtnTitle Order',
+                                      btnHeight: height * 0.045,
+                                      btnWidth: width * 0.3,
+                                      fontSizeTitle: width * 0.0315,
+                                    )
                                   ],
                                 ),
                               ),

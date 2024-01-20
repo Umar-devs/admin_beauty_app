@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
     final auth=FirebaseAuth.instance.currentUser;
     return  GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home:auth==null?LoginScreen():MyBottomNavBar(),
+      home:auth==null?LoginScreen():const MyBottomNavBar(),
     );
   }
 }
