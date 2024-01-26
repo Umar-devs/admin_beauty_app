@@ -2,6 +2,7 @@ import 'package:admin_beauty_app/Core/constants.dart';
 import 'package:admin_beauty_app/View/Pages/My%20Bottom%20Nav%20Bar/my_bottom_nav.dart';
 import 'package:admin_beauty_app/View/Reusable%20Components/custom_btn.dart';
 import 'package:admin_beauty_app/View/Reusable%20Components/reusable_text.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ import 'Components/Reusable Components/top_tick_circle.dart';
 import 'data.dart';
 
 class DetailsScreen extends StatelessWidget {
-  const DetailsScreen(
+  DetailsScreen(
       {super.key,
       required this.dualBtn,
       required this.name,
@@ -24,7 +25,7 @@ class DetailsScreen extends StatelessWidget {
       required this.status,
       required this.ind,
       required this.firstBtnTitle,
-      required this.secBtnTitle});
+      required this.secBtnTitle, required this.userId});
   final bool dualBtn;
   final String firstBtnTitle;
   final String secBtnTitle;
@@ -38,6 +39,7 @@ class DetailsScreen extends StatelessWidget {
   final String address;
   final String status;
   final String ind;
+  final String userId;
   @override
   Widget build(BuildContext context) {
     final double height = screenHeight(context);
@@ -56,6 +58,8 @@ class DetailsScreen extends StatelessWidget {
       date,
       '',
       phone,
+      '',
+      userId
     ];
     return SafeArea(
         child: Scaffold(
@@ -229,6 +233,7 @@ class DetailsScreen extends StatelessWidget {
                                                 'time': time,
                                                 'date': date,
                                                 'phone': phone,
+                                                'userId': userId,
                                                 'status':
                                                     firstBtnTitle.toLowerCase(),
                                                 'price': price,
@@ -246,7 +251,9 @@ class DetailsScreen extends StatelessWidget {
                                             bottomPad: height * 0.015,
                                             fontSizeTitle: width * 0.0315,
                                           )
-                                        : SizedBox(height: 0,),
+                                        : const SizedBox(
+                                            height: 0,
+                                          ),
                                     CustomBtn(
                                       onTap: () {
                                         FirebaseDatabase.instance
@@ -258,6 +265,7 @@ class DetailsScreen extends StatelessWidget {
                                           'category': category,
                                           'service': service,
                                           'time': time,
+                                          'userId': userId,
                                           'date': date,
                                           'phone': phone,
                                           'status': secBtnTitle.toLowerCase(),

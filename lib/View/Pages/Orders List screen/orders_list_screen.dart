@@ -130,6 +130,8 @@ class OrdersListScreen extends StatelessWidget {
                                                   appbarTitle == 'New Orders'
                                               ? 'Cancel'
                                               : 'Remove',
+                                          userId: filteredItems[index]
+                                              ['userId'],
                                         ),
                                         transition: Transition.fadeIn);
                                   },
