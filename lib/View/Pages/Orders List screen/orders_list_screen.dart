@@ -132,6 +132,8 @@ class OrdersListScreen extends StatelessWidget {
                                               : 'Remove',
                                           userId: filteredItems[index]
                                               ['userId'],
+                                          payInt: filteredItems[index]
+                                              ['datetimeEtc'],
                                         ),
                                         transition: Transition.fadeIn);
                                   },

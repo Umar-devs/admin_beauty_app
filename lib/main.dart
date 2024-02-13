@@ -2,6 +2,8 @@ import 'package:admin_beauty_app/View/Pages/Login/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
 
 import 'View/Pages/My Bottom Nav Bar/my_bottom_nav.dart';
@@ -15,7 +17,9 @@ Future<void> main() async {
       messagingSenderId: '375864446012',
       projectId: 'beauty-app-d3084',
     ),
-  );
+  );  Stripe.publishableKey =
+  'pk_test_51NaBipFStNFkbcMWNOSiZIVXiXLbE3X3t4VkU4mwJz556ByEZmCszD3A3AczCsBR78r5CK9EKIi6riOQwLqMOdoy00uVFvFb7x';
+  await dotenv.load(fileName: 'assets/.env');
   runApp(const MyApp());
 }
 

@@ -1,3 +1,4 @@
+import 'package:admin_beauty_app/Controller/payment_controller.dart';
 import 'package:admin_beauty_app/Core/constants.dart';
 import 'package:admin_beauty_app/View/Pages/My%20Bottom%20Nav%20Bar/my_bottom_nav.dart';
 import 'package:admin_beauty_app/View/Reusable%20Components/custom_btn.dart';
@@ -25,7 +26,9 @@ class DetailsScreen extends StatelessWidget {
       required this.status,
       required this.ind,
       required this.firstBtnTitle,
-      required this.secBtnTitle, required this.userId});
+      required this.secBtnTitle,
+      required this.payInt,
+      required this.userId});
   final bool dualBtn;
   final String firstBtnTitle;
   final String secBtnTitle;
@@ -40,6 +43,8 @@ class DetailsScreen extends StatelessWidget {
   final String status;
   final String ind;
   final String userId;
+  final String payInt;
+  final PaymentController paymentController = Get.put(PaymentController());
   @override
   Widget build(BuildContext context) {
     final double height = screenHeight(context);
@@ -59,7 +64,9 @@ class DetailsScreen extends StatelessWidget {
       '',
       phone,
       '',
-      userId
+      userId,
+      '',
+      payInt,
     ];
     return SafeArea(
         child: Scaffold(
@@ -238,6 +245,7 @@ class DetailsScreen extends StatelessWidget {
                                                     firstBtnTitle.toLowerCase(),
                                                 'price': price,
                                                 'address': address,
+                                                'payInt': payInt,
                                               }).then((value) => Get.offAll(
                                                       const MyBottomNavBar(),
                                                       transition:
@@ -256,6 +264,11 @@ class DetailsScreen extends StatelessWidget {
                                           ),
                                     CustomBtn(
                                       onTap: () {
+                                        if (secBtnTitle == 'Cancel') {
+                                          paymentController
+                                              .refundStripePayment(payInt);
+                                        }
+
                                         FirebaseDatabase.instance
                                             .ref()
                                             .child('Orders List')
