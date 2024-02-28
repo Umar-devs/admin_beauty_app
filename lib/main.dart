@@ -18,7 +18,7 @@ Future<void> main() async {
       projectId: 'beauty-app-d3084',
     ),
   );  Stripe.publishableKey =
-  'pk_test_51NaBipFStNFkbcMWNOSiZIVXiXLbE3X3t4VkU4mwJz556ByEZmCszD3A3AczCsBR78r5CK9EKIi6riOQwLqMOdoy00uVFvFb7x';
+  'pk_live_51MXhWFGtmelo2vv11GFCT3qPaFg2NrXUHOBJauLwiHKkEVttYIwu61Zia4vgXU1tFSR3eyNLvEvgYijjs1WL06gg00MP0DgaP9';
   await dotenv.load(fileName: 'assets/.env');
   runApp(const MyApp());
 }
@@ -36,3 +36,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+      
